@@ -9,7 +9,7 @@ const Header = () => {
   };
   const navigate = useNavigate();
   return (
-    <header className="p-5 sticky top-0 backdrop-blur-[8px]">
+    <header className="p-5 sticky top-0 backdrop-blur-[8px] z-20">
       <section className="max-w-[1280px] p-5 mx-auto shadow-md rounded-lg bg-primary text-primaryLight flex items-center justify-between">
         <h3
           className="text-lg md:text-xl font-pacifico cursor-pointer"
