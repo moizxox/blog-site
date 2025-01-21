@@ -6,20 +6,23 @@ import Layout from "./layout/Layout";
 import Blogs from "./pages/blogs/BlogListing";
 import SingleBlog from "./pages/blogs/SingleBlog";
 import AddEditBlogs from "./pages/blogs/AddEditBlogs";
+import { BlogProvider } from "./store/BlogContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <ToastContainer />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="single-blog" element={<SingleBlog />} />
-          <Route path="add-blog" element={<AddEditBlogs />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <BlogProvider children={null}>
+      <BrowserRouter>
+        <ToastContainer />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="blogs" element={<Blogs />} />
+            <Route path="single-blog" element={<SingleBlog />} />
+            <Route path="add-blog" element={<AddEditBlogs />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </BlogProvider>
   );
 }
 
