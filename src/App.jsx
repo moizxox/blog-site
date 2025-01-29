@@ -10,14 +10,14 @@ import { BlogProvider } from "./store/BlogContext";
 
 function App() {
   return (
-    <BlogProvider children={null}>
+    <BlogProvider>
       <BrowserRouter>
         <ToastContainer />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="blogs" element={<Blogs />} />
-            <Route path="single-blog" element={<SingleBlog />} />
+            <Route path="single-blog/:slug" element={<SingleBlog />} />
             <Route path="add-blog" element={<AddEditBlogs />} />
           </Route>
         </Routes>

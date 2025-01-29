@@ -1,6 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
-const BlogCard = ({ title, expert, image }) => {
-  console.log(image);
+const BlogCard = ({ title, expert, image, id }) => {
+  const navigate = useNavigate();
+  let BlogURI = encodeURIComponent(title);
+  BlogURI = BlogURI.toLowerCase()
+    .replace(/%20/g, "-")
+    .replace(/[^a-z0-9-]+/g, "");
 
   return (
     <section className="w-full rounded bg-primary p-6 text-primaryLight flex flex-col gap-4 items-start max-md:max-w-[550px]">
@@ -11,6 +16,7 @@ const BlogCard = ({ title, expert, image }) => {
         text="Read More >"
         radius="rounded"
         bg="bg-accent text-primaryLight hover:bg-primaryLight hover:text-primary"
+        onClick={() => navigate(`/single-blog/${BlogURI}`, { state: { id } })}
       />
     </section>
   );

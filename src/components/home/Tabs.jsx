@@ -3,9 +3,11 @@ import BlogCard from "../BlogCard";
 import { BlogContext } from "../../store/BlogContext";
 
 const Tabs = () => {
-  const [activeTab, setActiveTab] = useState(0);
+  // const [activeTab, setActiveTab] = useState(0);
   const blogsData = useContext(BlogContext);
   console.log(blogsData);
+  let limitedBlogs = blogsData.blogs.slice(0, 3);
+  console.log(limitedBlogs);
 
   return (
     <section className="max-w-[1280px] py-[60px] mx-auto flex flex-col items-center gap-6">
@@ -26,12 +28,13 @@ const Tabs = () => {
         Explore Blogs
       </h1>
       <div className="grid md:grid-cols-3 grid-cols-1 gap-4 w-full place-items-center items-stretch">
-        {blogsData.blogs.map((blog, index) => (
+        {limitedBlogs.map((blogs, index) => (
           <BlogCard
             key={index}
-            title={blog.title}
-            expert={blog.expert}
-            image={blog.img}
+            title={blogs.title}
+            expert={blogs.expert}
+            image={blogs.img}
+            id={blogs.id}
           />
         ))}
       </div>
